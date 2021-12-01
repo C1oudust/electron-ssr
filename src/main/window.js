@@ -19,7 +19,7 @@ export function createWindow () {
     minimizable: false,
     maximizable: false,
     show: false,
-    webPreferences: { webSecurity: process.env.NODE_ENV === 'production', nodeIntegration: true }
+    webPreferences: { webSecurity: process.env.NODE_ENV === 'production', nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION  }
   })
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode

@@ -36,6 +36,7 @@ switch (platform) {
 module.exports = {
   pluginOptions: {
     electronBuilder: {
+      nodeIntegration: true,
       mainProcessFile: 'src/main/index.js',
       mainProcessWatch: ['src/main/**'],
       builderOptions: {

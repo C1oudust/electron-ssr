@@ -15,9 +15,7 @@ import logger from './logger'
 import { clearShortcuts } from './shortcut'
 import { loadConfigsFromString } from '../shared/ssr'
 import { isMac, isWin } from '../shared/env'
-import {
-  installVueDevtools
-} from 'vue-cli-plugin-electron-builder/lib'
+import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const isPrimaryInstance = app.requestSingleInstanceLock()
 const isDevelopment = process.env.NODE_ENV !== 'production' && !process.env.IS_TEST
 if (!isPrimaryInstance) {
@@ -36,7 +34,7 @@ if (!isPrimaryInstance) {
   bootstrapPromise.then(async () => {
     if (isDevelopment) {
       console.log('Ensure Vue Devtools has been installed')
-      installVueDevtools().catch(err => {
+      installExtension(VUEJS_DEVTOOLS).catch(err => {
         logger.debug('Unable to install Vue Devtools', err)
       })
     }
